@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import PackingList from "./components/PackingList";
 import Stats from "./components/Stats";
 import FlashCard from "./FlashCard";
+import FutureDate from "./FutureDate";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -20,15 +21,37 @@ export default function App() {
     };
     setItems([...items, newItem]);
   }
+
+  function handleDelete(id) {
+    console.log(id);
+    const updatedItems = items.filter((item) => item.id !== id);
+    console.log(updatedItems);
+    setItems(updatedItems);
+  }
+
+  function handleCheck(id) {
+    setItems((items) =>
+      items.map((item) => {
+        return item.id === id ? { ...item, packed: !item.packed } : item;
+      })
+    );
+  }
   return (
     <div className="app">
       <Logo />
       <Form getItem={getItem} />
-      <PackingList items={items} />
+      <PackingList
+        items={items}
+        handleDelete={handleDelete}
+        handleCheck={handleCheck}
+      />
       <Stats totalItems={items.length} />
 
       <hr />
       <FlashCard />
+
+      <hr />
+      <FutureDate />
     </div>
   );
 }

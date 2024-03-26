@@ -6,11 +6,13 @@ import Item from "./Item";
 //   { id: 2, description: "Socks", quantity: 12, packed: false },
 //   { id: 3, description: "Charger", quantity: 1, packed: true },
 // ];
-export default function PackingList({ items }) {
+export default function PackingList({ items, handleDelete, handleCheck }) {
   const listItems = items.map((item) => (
     <Item
       {...item}
       key={item.id}
+      handleDelete={handleDelete}
+      handleCheck={handleCheck}
     />
   ));
 

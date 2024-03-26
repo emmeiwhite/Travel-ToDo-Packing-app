@@ -142,3 +142,13 @@ input[type="checkbox"] {
   font-weight: 700;
   padding: 3.2rem 0;
 }
+
+.future-event {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding-bottom: 3rem;
+}
+
+.total-steps-counter {
+  display: flex;
+}
