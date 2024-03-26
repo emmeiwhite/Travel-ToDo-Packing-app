@@ -1,5 +1,6 @@
 import "./styles.css";
 import { useState } from "react";
+
 const questions = [
   {
     id: 3457,
@@ -44,10 +45,17 @@ export default function FlashCard() {
 }
 
 function FlashCards() {
-  const cardsRendered = questions.map((question) => <Card {...question} />);
+  const cardsRendered = questions.map((question) => (
+    <Card
+      {...question}
+      key={question.id}
+    />
+  ));
   return <div className="flashcards">{cardsRendered}</div>;
 }
 
+/* 
+// This implementation selects all the cards one by one. But we require to select only one card at at time
 function Card({ id, question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -56,6 +64,23 @@ function Card({ id, question, answer }) {
       className={`${isOpen && "selected"}`}
     >
       {!isOpen ? question : answer}
+    </div>
+  );
+}
+*/
+
+function Card({ id, question, answer }) {
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleSelected(id) {
+    setSelectedId(id !== selectedId ? id : null);
+  }
+  return (
+    <div
+      onClick={() => handleSelected(id)}
+      className={`${selectedId === id ? "selected" : ""}`}
+    >
+      {id === selectedId ? answer : question}
     </div>
   );
 }
