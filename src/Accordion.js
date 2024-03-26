@@ -23,19 +23,21 @@ export default function Accordion() {
     <div className="accordion">
       {faqs.map((faq, index) => (
         <AccordionItem
-          {...faq}
+          title={faq.title}
           key={faq.title}
           num={index + 1}
           currentClicked={currentClicked}
           setCurrentClicked={setCurrentClicked}
-        />
+        >
+          {faq.text}
+        </AccordionItem>
       ))}
     </div>
   );
 }
 
 function AccordionItem({
-  text,
+  children,
   title,
   num,
   currentClicked,
@@ -56,7 +58,7 @@ function AccordionItem({
         <span className="number">{num <= 9 ? `0${num}` : num}</span>
         <span className="title">{title}</span>
         <span className="icon">{isOpen ? "-" : "+"}</span>
-        {isOpen && <div className={`content-box`}>{text}</div>}
+        {isOpen && <div className={`content-box`}>{children}</div>}
       </div>
     </>
   );
