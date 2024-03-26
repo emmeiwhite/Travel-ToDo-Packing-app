@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Stats() {
+export default function Stats({ totalItems }) {
   return (
     <footer className="stats">
-      You have X items on your list, and you already packed Y(Z%)
+      You have {totalItems} items on your list, and you already packed Y(Z%)
     </footer>
   );
 }
