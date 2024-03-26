@@ -45,7 +45,10 @@ export default function App() {
         handleDelete={handleDelete}
         handleCheck={handleCheck}
       />
-      <Stats totalItems={items.length} />
+      <Stats
+        totalItems={items.length}
+        totalChecked={items.filter((item) => item.packed === true).length}
+      />
 
       <hr />
       <FlashCard />
