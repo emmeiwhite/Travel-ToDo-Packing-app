@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import Logo from "./components/Logo";
 import Form from "./components/Form";
 import PackingList from "./components/PackingList";
 import Stats from "./components/Stats";
 import FlashCard from "./FlashCard";
 import FutureDate from "./FutureDate";
+import Accordion from "./Accordion";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -55,6 +56,12 @@ export default function App() {
 
       <hr />
       <FutureDate />
+
+      <hr />
+
+      <div className="">
+        <Accordion />
+      </div>
     </div>
   );
 }
